@@ -69,7 +69,7 @@ void drawList(int selected) {
         else
             printf("   %s\n", themes[i]);
     }
-    printf("\n\nUP/DOWN: select\nA: apply\nB: cancel");
+    printf("\n\nUP/DOWN: select\nA: apply\nB: cancel\nY: toggle text color");
 }
 
 bool writeTheme(const char *newTheme) {
