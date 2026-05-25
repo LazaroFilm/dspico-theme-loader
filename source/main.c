@@ -14,6 +14,7 @@
 
 static char themes[MAX_THEMES][NAME_LEN];
 static int  themeCount = 0;
+bool textBlack = false;
 
 PrintConsole uiConsole;
 
@@ -122,6 +123,7 @@ int main(void) {
     vramSetBankC(VRAM_C_SUB_BG);
     bgInitSub(3, BgType_Bmp16, BgSize_B16_256x256, 2, 0);
     consoleInit(&uiConsole, 0, BgType_Text4bpp, BgSize_T_256x256, 15, 0, false, true);
+    BG_PALETTE_SUB[255] = RGB15(31,31,31); // white text
     consoleSelect(&uiConsole);
 
     printf("Init FAT...\n");
@@ -151,6 +153,16 @@ int main(void) {
         scanKeys();
         u32 down = keysDown();
 
+        if (down & KEY_Y) {
+            textBlack = !textBlack;
+
+            if (textBlack)
+                BG_PALETTE_SUB[255] = RGB15(0,0,0);       // black
+            else
+                BG_PALETTE_SUB[255] = RGB15(31,31,31);    // white
+
+            drawList(selected);
+        }
         if (down & KEY_DOWN) {
             selected = (selected + 1) % themeCount;
             loadThemePreviews(selected);
