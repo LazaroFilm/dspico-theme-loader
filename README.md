@@ -1,3 +1,5 @@
+This is a fork of the sdpico-theme-loader, see the original [here](https://github.com/samallari/dspico-theme-loader)
+
 # DSPico Theme Loader
 Pico Theme Loader is a small Nintendo DS app that lets you switch themes on the [Pico Launcher](https://github.com/LNH-team/pico-launcher/) by LNH Team.
 
